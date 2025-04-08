@@ -20,5 +20,12 @@ namespace Practical_task_4_example_2_Stetsenko
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ContextMenu cm = this.FindResource("cmButton") as ContextMenu;
+            cm.PlacementTarget = sender as Button;
+            cm.IsOpen = true;
+        }
     }
 }
