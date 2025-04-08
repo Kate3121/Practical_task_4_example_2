@@ -5,48 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Practical_task_4_example_2_Stetsenko"
         mc:Ignorable="d"
-  Title="ContextMenuSample" Height="250" Width="250">
-	<Grid>
-		<!-- Градієнтний фон для вікна -->
-		<Grid.Background>
+  	   Title="ContextMenuSample" Height="250" Width="270">
+	<StackPanel>
+		<!-- Градієнтний фон для StackPanel -->
+		<StackPanel.Background>
 			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 				<GradientStop Color="#FF064C06"/>
 				<GradientStop Color="#FF2CD60A" Offset="0.851"/>
 			</LinearGradientBrush>
-		</Grid.Background>
+		</StackPanel.Background>
 
-		<!-- Кнопка з контекстним меню -->
-		<Button Content="Click me to select!" VerticalAlignment="Center"
-                HorizontalAlignment="Center" FontFamily="Comic Sans MS" FontSize="20"
-                Foreground="White">
+		<!-- Текстове поле з контекстним меню -->
+		<TextBox Text="Right-click here for context menu!"
+             FontFamily="Comic Sans MS" FontSize="15"
+             Background="#FF86F3A6" Foreground="White">
 
-			<!-- Шаблон кнопки з тінню та заокругленими кутами -->
-			<Button.Template>
-				<ControlTemplate TargetType="Button">
-					<Border Background="LightGreen" BorderBrush="White" BorderThickness="2"
-                            CornerRadius="15" Padding="5,3">
-
-						<!-- Тінь кнопки -->
-						<Border.Effect>
-							<DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5" BlurRadius="10"/>
-						</Border.Effect>
-
-						<!-- Відображення вмісту кнопки -->
-						<ContentPresenter HorizontalAlignment="Center"
-VerticalAlignment="Center" RecognizesAccessKey="True"/>
-					</Border>
-				</ControlTemplate>
-			</Button.Template>
-
-			<!-- Контекстне меню з пунктами -->
-			<Button.ContextMenu>
+			<!-- Контекстне меню для TextBox -->
+			<TextBox.ContextMenu>
 				<ContextMenu FontFamily="Comic Sans MS" FontSize="16">
-					<MenuItem Header="Sweet" IsCheckable="True" IsChecked="False"/>
-					<MenuItem Header="Salty" IsCheckable="True" IsChecked="False"/>
+
+					<!-- Пункт меню: Вирізати -->
+					<MenuItem Command="Cut">
+						<MenuItem.Icon>
+							<Image Source="component\images\scissors.png" />
+						</MenuItem.Icon>
+					</MenuItem>
+
+					<!-- Пункт меню: Копіювати -->
+					<MenuItem Command="Copy">
+						<MenuItem.Icon>
+							<Image Source="component\images\copy.png" />
+						</MenuItem.Icon>
+					</MenuItem>
+
+					<!-- Роздільник -->
 					<Separator/>
-					<MenuItem Header="Spicy" IsCheckable="True" IsChecked="False"/>
+
+					<!-- Пункт меню: Вставити -->
+					<MenuItem Command="Paste">
+						<MenuItem.Icon>
+							<Image Source="component\images\paste.png" />
+						</MenuItem.Icon>
+					</MenuItem>
+
 				</ContextMenu>
-			</Button.ContextMenu>
-		</Button>
-	</Grid>
+			</TextBox.ContextMenu>
+		</TextBox>
+	</StackPanel>
 </Window>
